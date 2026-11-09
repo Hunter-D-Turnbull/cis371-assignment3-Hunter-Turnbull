@@ -1,17 +1,32 @@
 <template>
-  <div class="baseBeverage"></div>
+  <div
+    class="baseBeverage"
+    :style="{
+      backgroundColor: color,
+      height: height + '%'
+    }"
+  ></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  color: string;
+  height: number;
+}>();
+</script>
 
 <style scoped>
 .baseBeverage {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
   bottom: 0;
-  animation: pour-tea 2s;
-  z-index: 300;
-  /* // border-radius: 0.05em 0.05em 2.2em 2.2em; */
+  left: 0;
+
+  width: 100%;
+
+  border-radius: 0 0 2.2em 2.2em;
+
+  z-index: 1;
+
+  animation: pour-tea 2s forwards;
 }
 </style>

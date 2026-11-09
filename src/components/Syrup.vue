@@ -1,16 +1,33 @@
 <template>
-  <div class="syrup"></div>
+  <div
+    class="syrup"
+    :style="{
+      background: name === 'Vanilla'
+        ? 'repeating-linear-gradient(45deg, white, white 10px, #e1cf95 10px, #e1cf95 20px)'
+        : color,
+      bottom: bottom + '%'
+    }"
+  ></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  name: string;
+  color: string;
+  bottom: number;
+}>();
+</script>
+
 <style lang="scss" scoped>
 .syrup {
-  transform: translateY(400%);
-  background-color: #c6c6c6;
-  position: relative;
+  position: absolute;
+  left: 0;
+
   width: 100%;
   height: 20%;
-  animation: pour-tea 2s 1s forwards;
+
   z-index: 2;
+
+  animation: pour-tea 2s 1s forwards;
 }
 </style>
